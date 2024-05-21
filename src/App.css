@@ -1,64 +1,64 @@
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #2c2c2c;
-  color: #e0e0e0;
-}
-
 .App {
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  max-width: 800px;
+  padding-top: 20px;
 }
 
-h1 {
-  margin-bottom: 20px;
-}
-
-.search_input {
-  padding: 10px;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 20px;
-  border: 1px solid #555;
-  border-radius: 4px;
-  background-color: #444;
-  color: #e0e0e0;
-}
-
+/* Center the container holding the contacts */
 .contacts_list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers cards horizontally */
 }
 
-.contacts_card {
-  background: #333;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.card-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers cards horizontally */
 }
 
-.contacts_card h2 {
-  margin: 0 0 10px 0;
-  font-size: 1.5em;
-  color: #fff;
+.card {
+  width: 80%; /* Smaller width */
+  max-width: 500px; /* Maximum size to keep cards compact */
+  margin-bottom: 20px; /* Space between cards */
+  transition: all 0.3s ease-in-out; /* Smooth transition for interaction */
 }
 
-.contacts_card p {
-  margin: 5px 0;
-  color: #ddd;
+.card:hover {
+  transform: scale(1.02); /* Slight scale to indicate interactivity */
 }
 
-.loading,
-.error {
-  color: #ff6b6b;
-  font-size: 1.2em;
+.btn {
+  position: relative;
+  margin-top: 10px; /* Adds some space above the button */
+  margin-bottom: 20px; /* Adds space below the button */
+  width: auto; /* Adjust width as needed or use auto for content width */
+  background-color: #6c757d; /* Dark grey button background */
+  color: #fff; /* White text color */
+  border: none; /* Optional: removes border */
 }
+
+/* Dark mode specific styles */
+.dark-mode {
+  background-color: #343a40;
+  color: #f8f9fa;
+}
+
+.dark-mode input,
+.dark-mode .form-check-label {
+  background-color: #495057;
+  color: #f8f9fa;
+}
+
+.dark-mode .card {
+  background-color: #495057;
+  color: #f8f9fa;
+}
+
+.dark-mode a {
+  color: #0d6efd;
+}
+
+.dark-mode .btn-light {
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+

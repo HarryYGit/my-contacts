@@ -7,13 +7,16 @@ This is a responsive "Contacts" application built using React. The app fetches a
 - Fetches contacts data from `https://jsonplaceholder.typicode.com/users`
 - this app only displayed the user information of  name, phone, email, address, and company name
 - Allows users to search contacts by name, email, phone, or company name
+- Toggle options to display additional information such as websites and catchphrases
+- Dark mode and light mode toggle button
 - Displays contact information in a visually appealing card format
 - Responsive design for various screen sizes
+- Styled with Bootstrap for a modern and responsive UI
 
 ## Technologies Used
 
 - React
-- CSS for styling
+- Bootstrap for styling
 
 ## Installation and Running the Application
 
@@ -51,3 +54,17 @@ The application is hosted on [haoranyan.xyz](http://haoranyan.xyz) for preview.
 - **`src/App.css`**: The CSS file for styling the application.
 - **`src/index.js`**: The entry point of the React application.
 - **`public/index.html`**: The HTML template.
+
+## Usage
+
+### Search Contacts
+
+- Use the search input to filter contacts by name, email, phone, or company name.
+
+### Toggle Display Options
+
+- Use the checkboxes to toggle the display of additional information like websites and catchphrases.
+
+### Dark Mode / Light Mode
+
+- Click the "Switch to Light Mode" button to switch to light mode and "Switch to Dark Mode" to switch back to dark mode.
