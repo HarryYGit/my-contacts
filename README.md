@@ -13,6 +13,23 @@ This is a responsive "Contacts" application built using React. The app fetches a
 - Responsive design for various screen sizes
 - Styled with Bootstrap for a modern and responsive UI
 
+- Sort contacts by name.
+- Display additional contact details on card click.
+- Show/hide website and catchphrase information.
+
+## Modifications Made Today
+
+1. **Sort Contacts by Name**: Contacts are now displayed in alphabetical order by name.
+2. **Change Style of the Page and Contacts Card**:
+    - Updated the overall styling of the page for a modern, flat design.
+    - Contacts card now includes shadow effects and rounded corners for better aesthetics.
+    - Improved button styles for light and dark modes.
+3. **Change Display Info**:
+    - Initially display only the name, phone, and company name of each contact.
+    - Added an initials icon before each contact name.
+    - Show additional contact information (email, address, etc.) when a contact card is clicked.
+
+
 ## Technologies Used
 
 - React

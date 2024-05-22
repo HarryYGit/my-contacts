@@ -2,41 +2,58 @@
   padding-top: 20px;
 }
 
-/* Center the container holding the contacts */
+
 .contacts_list {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers cards horizontally */
+  align-items: center; 
 }
 
 .card-title {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers cards horizontally */
+  flex-direction: row;
+  align-items: center; 
+}
+
+.initials {
+  background-color: #007bff; 
+  color: white; 
+  border-radius: 50%; 
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 10px;
 }
 
 .card {
-  width: 80%; /* Smaller width */
-  max-width: 500px; /* Maximum size to keep cards compact */
-  margin-bottom: 20px; /* Space between cards */
-  transition: all 0.3s ease-in-out; /* Smooth transition for interaction */
+  width: 80%;
+  max-width: 500px;
+  margin-bottom: 20px; 
+  transition: all 0.3s ease-in-out; 
+  cursor: pointer; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border: none; 
+  border-radius: 10px; 
 }
 
 .card:hover {
-  transform: scale(1.02); /* Slight scale to indicate interactivity */
+  transform: scale(1.02); 
 }
 
 .btn {
   position: relative;
-  margin-top: 10px; /* Adds some space above the button */
-  margin-bottom: 20px; /* Adds space below the button */
-  width: auto; /* Adjust width as needed or use auto for content width */
-  background-color: #6c757d; /* Dark grey button background */
-  color: #fff; /* White text color */
-  border: none; /* Optional: removes border */
+  margin-top: 10px; 
+  margin-bottom: 20px; 
+  width: auto; 
+  background-color: #f8f9fa; 
+  color: #343a40; 
+  border: none; 
+  border-radius: 20px; 
 }
 
-/* Dark mode specific styles */
+
 .dark-mode {
   background-color: #343a40;
   color: #f8f9fa;
@@ -58,7 +75,55 @@
 }
 
 .dark-mode .btn-light {
-  background-color: #f8f9fa;
+  background-color: #343a40; 
+  color: #f8f9fa;
+}
+
+.light-mode .btn {
+  background-color: #f8f9fa; 
   color: #343a40;
 }
 
+.dark-mode .contact-card {
+  background-color: #495057;
+  color: #f8f9fa;
+}
+
+.dark-mode .contact-card .card-title {
+  color: #0d6efd; 
+}
+
+.dark-mode .contact-card .card-text {
+  color: #f8f9fa;
+}
+
+/* Light mode specific styles */
+.title {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.title-icon {
+  margin-right: 10px;
+  font-size: 2rem;
+  color: #007bff;
+}
+
+.contact-card {
+  background-color: #f8f9fa;
+  color: #343a40;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
+}
+
+.contact-card .card-title {
+  color: #007bff;
+}
+
+.contact-card .card-text {
+  color: #495057;
+}

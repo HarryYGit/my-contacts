@@ -1,7 +1,7 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { FaUserCircle } from 'react-icons/fa'; 
 
 // API link
 const Source_URL = 'https://jsonplaceholder.typicode.com/users';
@@ -14,10 +14,12 @@ function App() {
   const [showCatchPhrase, setShowCatchPhrase] = useState(false);
   const [error, setError] = useState();
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [expandedContactId, setExpandedContactId] = useState(null);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
   };
 
   useEffect(() => {
@@ -26,7 +28,7 @@ function App() {
       try {
         const response = await fetch(Source_URL);
         const data = await response.json();
-        setContacts(data);
+        setContacts(data.sort((a, b) => a.name.localeCompare(b.name)));
       } catch (e) {
         setError("Failed to fetch data. Please check your connection and try again.");
         console.error(e);
@@ -37,8 +39,16 @@ function App() {
     fetchContacts();
   }, []);
 
+  useEffect(() => {
+    document.body.classList.add(isDarkMode ? 'dark-mode' : 'light-mode');
+  }, [isDarkMode]);
+
   const handleSearch = (event) => {
     setSearch(event.target.value);
+  };
+
+  const handleCardClick = (contactId) => {
+    setExpandedContactId(expandedContactId === contactId ? null : contactId);
   };
 
   const filteredContacts = contacts.filter(contact =>
@@ -50,9 +60,12 @@ function App() {
 
   return (
     <div className="App container py-5">
-      <h2 className="mb-4">My Contacts</h2>
+      <h2 className="mb-4 title">
+        <FaUserCircle className="title-icon" />
+        My Contacts
+      </h2>
       <button onClick={toggleDarkMode} className={`btn ${isDarkMode ? 'btn-light' : 'btn-dark'} mb-3`}>
-        {isDarkMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+        {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       </button>
 
       <input
@@ -94,15 +107,21 @@ function App() {
       ) : (
         <div className="contacts_list">
           {filteredContacts.map(contact => (
-            <div key={contact.id} className="card mb-3">
+            <div key={contact.id} className="card mb-3 contact-card" onClick={() => handleCardClick(contact.id)}>
               <div className="card-body">
-                <h5 className="card-title">{contact.name}</h5>
+                <h5 className="card-title">
+                  <span className="initials">{contact.name[0]}</span> {contact.name}
+                </h5>
                 <p className="card-text"><strong>Phone:</strong> {contact.phone}</p>
-                <p className="card-text"><strong>Email:</strong> {contact.email}</p>
-                <p className="card-text"><strong>Address:</strong> {`${contact.address.suite}, ${contact.address.street}, ${contact.address.city}, ${contact.address.zipcode}`}</p>
                 <p className="card-text"><strong>Company:</strong> {contact.company.name}</p>
-                {showCatchPhrase && <p className="card-text"><strong>CatchPhrase:</strong> {contact.company.catchPhrase}</p>}
-                {showWebsite && <p className="card-text"><strong>Website:</strong> <a href={`http://${contact.website}`} target="_blank" rel="noopener noreferrer">{contact.website}</a></p>}
+                {expandedContactId === contact.id && (
+                  <>
+                    <p className="card-text"><strong>Email:</strong> {contact.email}</p>
+                    <p className="card-text"><strong>Address:</strong> {`${contact.address.suite}, ${contact.address.street}, ${contact.address.city}, ${contact.address.zipcode}`}</p>
+                    {showCatchPhrase && <p className="card-text"><strong>CatchPhrase:</strong> {contact.company.catchPhrase}<br/><strong>BS:</strong> {contact.company.bs}</p>}
+                    {showWebsite && <p className="card-text"><strong>Website:</strong> <a href={`http://${contact.website}`} target="_blank" rel="noopener noreferrer">{contact.website}</a></p>}
+                  </>
+                )}
               </div>
             </div>
           ))}
